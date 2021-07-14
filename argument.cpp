@@ -27,6 +27,10 @@ Argument::Argument(
 		const uint & nargs
 		) 
 {
+	if (keys.size() == 0)
+	{
+		throw Exception("Every key should have at least one variation under which it can be handled");
+	}
 	for (auto & x : keys)
 	{
 		this->keyVariations.push_back(x);
