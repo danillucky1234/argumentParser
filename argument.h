@@ -18,6 +18,8 @@ private:
 	std::vector<std::string> getKeyVariations() const;	// This function returns a vector with keys, it is used only by the ArgumentParser class 
 	bool isThisKeyRequired() const;						// The function returns a boolean value - whether the given key is mandatory or not
 	uint getNargs() const;								// The function returns the number of arguments needed for the given key (if any)
+	std::vector<std::string> getArguments() const; 		// The function returns a vector with all the arguments of the given key, if they are available.
+	std::string getDefinition() const; 					// The function returns a description of what the parameter does
 
 	// Declare the ArgumentParser class as a friend so that it has access to private functions
 	friend class ArgumentParser;
@@ -28,9 +30,6 @@ public:
 	Argument(const std::vector<std::string> & keys, const std::string & definition, const bool & isRequiredKey, const unsigned int & nargs, const std::vector<std::string> & arguments); // If you know in advance what the arguments of a given key will be, you can specify them here
 	
 	Argument(const std::vector<std::string> & keys, const std::string & definition, const bool & isRequiredKey, const uint & nargs = 0); // If the arguments are not known in advance, they can be absolutely anything, then we can specify neither the arguments nor the number of arguments. 
-
-	std::vector<std::string> getArguments() const; // The function returns a vector with all the arguments of the given key, if they are available.
-	std::string getDefinition() const; // The function returns a description of what the parameter does
 };
 
 #endif // ARGUMENT_H
