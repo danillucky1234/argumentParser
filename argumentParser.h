@@ -9,7 +9,7 @@ class ArgumentParser
 private:
 	std::vector<Argument> possibleArguments;	// A vector of Argument classes. A vector of all possible keys that the program's author specifies
 	uint numberOfRequiredKeys;					// When filling the possibleArguments vector, we will increment the counter with the number of keys that are mandatory for program execution, so that later, in the parseArgs function, we can determine whether all mandatory keys have been used
-	std::vector<Argument> realArguments;		// A vector of Argument classes, all useful parameters that will be passed to the program will be written in this vector and later we will pull from this vector all arguments, definition, check whether the key was used, etc.
+	std::vector<Argument> realArguments;		// A vector of Argument objects, all useful parameters that will be passed to the program will be written in this vector and later we will pull from this vector all arguments, definition, check whether the key was used, etc.
 
 	uint getIndexFromVectorInWhichSearchKey(const std::vector<Argument> & args, const std::string & key); // This function searches a given vector for the key we need. If it exists, it returns the index of the vector where the key is located, but if there is no such key in the vector, it returns -1.
 

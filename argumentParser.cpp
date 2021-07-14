@@ -10,12 +10,6 @@ ArgumentParser::ArgumentParser()
 // This function checks if the key exists in the parser, and if it does, throws an exception; if the key has not yet been added, it adds it to the vector of possible keys
 void ArgumentParser::addArgument(const Argument & arg)
 {
-	// Later, in the parseArgs function, when we finish parsing all the items from the command line, we will compare the number of mandatory keys. If it does not match, we throw an exception. That's why we check if the given key is mandatory or not.
-	if (arg.isThisKeyRequired())
-	{
-		++(this->numberOfRequiredKeys);
-	}
-	
 	// Let's check if we have added such a key. If so, throw an exception that such a key already exists
 	std::vector<std::string> possibleAddedKeys = arg.getKeyVariations();
 	for (auto & x : this->possibleArguments)
@@ -28,6 +22,12 @@ void ArgumentParser::addArgument(const Argument & arg)
 			// And if we found one, we throw an exception with an explanation that such a key has already been added to the parser.
 			throw Exception("You have already added the " + possibleAddedKeys[0] + " key!");
 		}
+	}
+	
+	// Later, in the parseArgs function, when we finish parsing all the items from the command line, we will compare the number of mandatory keys. If it does not match, we throw an exception. That's why we check if the given key is mandatory or not.
+	if (arg.isThisKeyRequired())
+	{
+		++(this->numberOfRequiredKeys);
 	}
 	this->possibleArguments.push_back(arg);
 }
@@ -214,11 +214,11 @@ std::vector<std::string> ArgumentParser::getArgumentsByKey(const std::string & k
 std::string ArgumentParser::getDefinitionByKey(const std::string & key)
 {
 	// Look for such key among the vector of realArguments, and if there is such a key, we return its definition
-	uint index = getIndexFromVectorInWhichSearchKey(this->realArguments, key);
+	uint index = getIndexFromVectorInWhichSearchKey(this->possibleArguments, key);
 	if (index != -1)
 	{
 		// If key was founded - return description
-		return this->realArguments[index].getDefinition();
+		return this->possibleArguments[index].getDefinition();
 	}
 	else
 	{

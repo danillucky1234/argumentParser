@@ -1,3 +1,5 @@
+## You can find all the detailed information about this project on the [Wiki](https://github.com/danillucky1234/argumentParser/wiki) tab. Every function, every field of a class, and even every constructor is explained there.  
+
 ### What is this project?
 The argument parser is the program, which can help you to don't write a whole bunch of code and can do all the neccessary checks for you. [Usage below](#usage)
 
@@ -116,3 +118,5 @@ int main(int argc, char ** argv)
 	return 0;
 }
 ```
+
+### If you find some bug or you want to improve this project - feels free to contribute

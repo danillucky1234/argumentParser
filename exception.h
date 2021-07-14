@@ -12,7 +12,7 @@ private:
 public:
 	Exception(const std::string & msg) : message(msg) {}	// 	A constructor that initializes a private field
 	virtual ~Exception() {}											// Destructor
-	virtual const char* what() const noexcept
+	virtual const char* what() const noexcept override
 	{
 		return this->message.c_str();								// The function the programmer will call to see what the error is
 	}
